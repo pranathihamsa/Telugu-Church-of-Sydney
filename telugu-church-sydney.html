@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telugu Church of Sydney — తెలుగు చర్చి</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Tiro+Telugu:ital@0;1&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211f1d;
+    --parchment:#FBF6EC;
+    --parchment-dim:#F3EBDA;
+    --indigo:#1B2A46;
+    --indigo-deep:#101a30;
+    --marigold:#C9922E;
+    --marigold-soft:#E3B65D;
+    --terracotta:#8B3A2F;
+    --teal:#2B5F5A;
+    --line:rgba(33,31,29,0.12);
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .tel{
+    font-family:'Tiro Telugu', serif;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--terracotta);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    padding:18px 0;
+    transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
+  }
+  header .wrap{display:flex; align-items:center; justify-content:space-between;}
+  header.solid{
+    background:rgba(251,246,236,0.92);
+    backdrop-filter:blur(8px);
+    box-shadow:0 1px 0 var(--line);
+    padding:12px 0;
+  }
+  .brand{display:flex; align-items:baseline; gap:10px; font-family:'Fraunces',serif;}
+  .brand-en{font-size:19px; font-weight:600; color:var(--parchment);}
+  .brand-te{font-family:'Tiro Telugu',serif; font-size:15px; color:var(--marigold-soft);}
+  header.solid .brand-en{color:var(--indigo);}
+  header.solid .brand-te{color:var(--terracotta);}
+  nav ul{list-style:none; display:flex; gap:22px; margin:0; padding:0;}
+  nav a{
+    font-size:14.5px; font-weight:600; text-decoration:none;
+    color:var(--parchment); opacity:.88;
+    padding-bottom:3px; border-bottom:1px solid transparent;
+    transition:border-color .2s, opacity .2s;
+  }
+  nav a:hover{opacity:1; border-color:var(--marigold-soft);}
+  header.solid nav a{color:var(--indigo);}
+  header.solid nav a:hover{border-color:var(--terracotta);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:radial-gradient(120% 90% at 50% -10%, #24365a 0%, var(--indigo) 45%, var(--indigo-deep) 100%);
+    overflow:hidden;
+    display:flex; align-items:center;
+    padding-top:90px;
+  }
+  .hero-arcs{
+    position:absolute; inset:0; z-index:0;
+    display:flex; align-items:flex-end; justify-content:center;
+    opacity:.9;
+  }
+  .hero-arcs svg{width:min(1400px, 180vw); height:auto;}
+  .hero .wrap{position:relative; z-index:2;}
+  .hero-inner{
+    max-width:720px;
+    padding:80px 0 120px;
+  }
+  .hero-inner .eyebrow{color:var(--marigold-soft);}
+  .hero h1{
+    color:var(--parchment);
+    font-size:clamp(40px, 6vw, 68px);
+    line-height:1.05;
+    margin-top:16px;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--marigold-soft); font-weight:500;
+  }
+  .hero-te{
+    font-family:'Tiro Telugu',serif;
+    color:#D8C9A3;
+    font-size:clamp(19px, 2.4vw, 26px);
+    margin-top:18px;
+  }
+  .hero-sub{
+    color:#C9D2E0;
+    max-width:520px;
+    margin-top:22px;
+    font-size:16.5px;
+  }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:16px; margin-top:38px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px;
+    border-radius:2px;
+    font-weight:600; font-size:14.5px; text-decoration:none;
+    transition:transform .2s ease, background .2s ease, color .2s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--marigold); color:var(--indigo-deep);}
+  .btn-primary:hover{background:var(--marigold-soft); transform:translateY(-2px);}
+  .btn-ghost{border-color:rgba(251,246,236,0.4); color:var(--parchment);}
+  .btn-ghost:hover{border-color:var(--parchment); transform:translateY(-2px);}
+  .hero-service{
+    margin-top:52px; display:flex; gap:36px; flex-wrap:wrap;
+    border-top:1px solid rgba(251,246,236,0.18); padding-top:24px;
+  }
+  .hero-service div{color:#B9C3D6; font-size:13.5px;}
+  .hero-service strong{display:block; color:var(--parchment); font-family:'Fraunces',serif; font-size:20px; font-weight:500; margin-bottom:2px;}
+
+  /* ---------- KALAMKARI DIVIDER (signature element) ---------- */
+  .motif{
+    display:flex; justify-content:center; padding:6px 0;
+    color:var(--marigold);
+  }
+  .motif svg{height:26px; width:auto;}
+
+  /* ---------- SECTION BASE ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:640px; margin:0 auto 56px; text-align:center;}
+  .section-head h2{font-size:clamp(28px,4vw,40px); margin-top:14px;}
+  .section-head p{color:#4a4744; margin-top:14px; font-size:16.5px;}
+
+  /* ---------- WELCOME ---------- */
+  .welcome{background:var(--parchment);}
+  .welcome-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center;
+  }
+  .welcome h2{font-size:clamp(26px,3.6vw,36px); max-width:460px;}
+  .welcome p{color:#453f39; margin-top:18px; max-width:480px;}
+  .welcome-te{
+    font-family:'Tiro Telugu',serif; color:var(--terracotta); font-size:18px; margin-top:22px;
+  }
+  .welcome-card{
+    background:var(--indigo); color:var(--parchment);
+    padding:38px; border-radius:2px;
+    position:relative;
+  }
+  .welcome-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:4px;
+    background:var(--marigold);
+  }
+  .welcome-card h3{font-size:20px; color:var(--marigold-soft); margin-bottom:16px;}
+  .welcome-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px;}
+  .welcome-list li{display:flex; gap:12px; font-size:15px; color:#D9E0EC;}
+  .welcome-list b{color:var(--parchment); min-width:96px; display:inline-block; font-weight:600;}
+
+  /* ---------- SERVICES / TIMES ---------- */
+  .times{background:var(--parchment-dim);}
+  .times-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; background:var(--line); border:1px solid var(--line);}
+  .time-card{background:var(--parchment-dim); padding:36px 30px;}
+  .time-card .eyebrow{color:var(--teal);}
+  .time-card h3{font-size:22px; margin-top:10px;}
+  .time-card .when{font-family:'Fraunces',serif; font-size:17px; color:var(--terracotta); margin-top:12px;}
+  .time-card p{color:#4a4744; font-size:15px; margin-top:10px;}
+
+  /* ---------- FELLOWSHIPS ---------- */
+  .fellowships{background:var(--parchment);}
+  .fel-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); border:1px solid var(--line);}
+  .fel-card{background:var(--parchment); padding:44px 40px; position:relative;}
+  .fel-card .eyebrow{color:var(--terracotta);}
+  .fel-card h3{font-size:26px; margin-top:12px;}
+  .fel-card .tel{display:block; color:var(--teal); font-size:15px; margin-top:6px;}
+  .fel-card p{color:#4a4744; margin-top:16px; font-size:15px;}
+  .fel-meta{margin-top:20px; display:flex; flex-direction:column; gap:6px;}
+  .fel-meta span{font-size:14px; color:#4a4744;}
+  .fel-meta b{color:var(--indigo); font-weight:600;}
+
+  /* ---------- MINISTRIES ---------- */
+  .ministries{background:var(--parchment);}
+  .min-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .min-card{padding:30px 22px; border:1px solid var(--line); transition:transform .25s ease, box-shadow .25s ease;}
+  .min-card:hover{transform:translateY(-6px); box-shadow:0 18px 32px -20px rgba(27,42,70,0.35);}
+  .min-icon{width:38px; height:38px; margin-bottom:18px;}
+  .min-card h3{font-size:18px;}
+  .min-card p{font-size:14.5px; color:#4a4744; margin-top:10px;}
+  .min-card .tel{display:block; margin-top:8px; color:var(--terracotta); font-size:14px;}
+
+  /* ---------- QUOTE ---------- */
+  .quote-section{
+    background:var(--indigo-deep); color:var(--parchment); text-align:center;
+    padding:110px 0;
+    position:relative;
+  }
+  .quote-section blockquote{
+    font-family:'Fraunces',serif; font-style:italic; font-weight:500;
+    font-size:clamp(22px,3vw,32px); max-width:760px; margin:0 auto; line-height:1.5;
+  }
+  .quote-section cite{
+    display:block; margin-top:26px; font-style:normal; font-size:14px; color:var(--marigold-soft); letter-spacing:.04em;
+  }
+
+  /* ---------- EVENTS ---------- */
+  .events{background:var(--parchment-dim);}
+  .events-list{display:flex; flex-direction:column; border-top:1px solid var(--line);}
+  .event-row{
+    display:grid; grid-template-columns:140px 1fr auto; gap:26px; align-items:center;
+    padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  .event-date{font-family:'Fraunces',serif; color:var(--terracotta);}
+  .event-date .d{font-size:26px; display:block; line-height:1.1;}
+  .event-date .m{font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:#6b6660;}
+  .event-info h3{font-size:19px;}
+  .event-info p{font-size:14.5px; color:#4a4744; margin-top:6px;}
+  .event-tag{
+    font-size:12px; text-transform:uppercase; letter-spacing:.08em; font-weight:700;
+    color:var(--teal); border:1px solid var(--teal); padding:6px 12px; white-space:nowrap;
+  }
+
+  /* ---------- VISIT / MAP ---------- */
+  .visit{background:var(--parchment);}
+  .visit-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .visit-map{
+    background:var(--indigo); min-height:340px; position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .visit-map svg{opacity:.9;}
+  .visit-map .pin{position:absolute; top:46%; left:52%;}
+  .addr{margin-top:26px; font-size:15.5px; color:#4a4744;}
+  .addr strong{display:block; font-family:'Fraunces',serif; font-size:19px; color:var(--indigo); margin-bottom:4px;}
+  form{display:flex; flex-direction:column; gap:16px; margin-top:6px;}
+  form input, form textarea{
+    font-family:'Source Sans 3', sans-serif; font-size:15px;
+    padding:13px 14px; border:1px solid var(--line); background:var(--parchment);
+    color:var(--ink); border-radius:2px;
+  }
+  form input:focus, form textarea:focus{outline:2px solid var(--marigold); outline-offset:1px; border-color:var(--marigold);}
+  form textarea{min-height:110px; resize:vertical;}
+  form button{
+    align-self:flex-start; background:var(--terracotta); color:var(--parchment);
+    border:none; padding:14px 30px; font-weight:600; font-size:14.5px; border-radius:2px; cursor:pointer;
+    transition:background .2s ease;
+  }
+  form button:hover{background:var(--indigo);}
+
+  /* ---------- LEADERS ---------- */
+  .leaders{background:var(--parchment-dim);}
+  .lead-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:28px;}
+  .lead-card{text-align:center;}
+  .lead-avatar{
+    width:88px; height:88px; border-radius:50%; margin:0 auto 18px;
+    background:var(--indigo); color:var(--marigold-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:26px; font-weight:500;
+    border:2px solid var(--marigold);
+  }
+  .lead-card h3{font-size:17px;}
+  .lead-role{font-size:13px; color:var(--terracotta); font-weight:600; text-transform:uppercase; letter-spacing:.06em; margin-top:6px;}
+  .lead-card p{font-size:14px; color:#4a4744; margin-top:10px;}
+
+  /* ---------- DONATE ---------- */
+  .donate{background:var(--indigo-deep); color:var(--parchment);}
+  .donate-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  .donate h2{color:var(--parchment); font-size:clamp(28px,3.6vw,38px);}
+  .donate .eyebrow{color:var(--marigold-soft);}
+  .donate p{color:#C9D2E0; margin-top:16px; max-width:460px;}
+  .donate-card{
+    background:rgba(251,246,236,0.05); border:1px solid rgba(251,246,236,0.15);
+    padding:36px; border-radius:2px;
+  }
+  .donate-row{display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(251,246,236,0.12); font-size:14.5px;}
+  .donate-row:last-child{border-bottom:none;}
+  .donate-row span:first-child{color:#93A0B8;}
+  .donate-row span:last-child{color:var(--parchment); font-weight:600;}
+  .donate-actions{display:flex; gap:14px; margin-top:26px; flex-wrap:wrap;}
+
+  /* ---------- SOCIAL ---------- */
+  .social-row{display:flex; gap:16px; margin-top:16px;}
+  .social-row a{
+    width:36px; height:36px; border-radius:50%; border:1px solid rgba(185,195,214,0.3);
+    display:flex; align-items:center; justify-content:center; transition:border-color .2s, background .2s;
+  }
+  .social-row a:hover{border-color:var(--marigold-soft); background:rgba(227,182,93,0.1);}
+  .social-row svg{width:16px; height:16px; stroke:#B9C3D6;}
+  .social-row a:hover svg{stroke:var(--marigold-soft);}
+  .live-note{
+    display:inline-flex; align-items:center; gap:8px; margin-top:18px;
+    font-size:13px; color:#93A0B8;
+  }
+  .live-dot{width:8px; height:8px; border-radius:50%; background:var(--terracotta); display:inline-block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--indigo-deep); color:#B9C3D6; padding:64px 0 28px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;}
+  .foot-brand-en{font-family:'Fraunces',serif; color:var(--parchment); font-size:21px;}
+  .foot-brand-te{font-family:'Tiro Telugu',serif; color:var(--marigold-soft); font-size:15px; margin-top:4px;}
+  footer p{font-size:14px; margin-top:14px; max-width:280px; color:#93A0B8;}
+  footer h4{font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--marigold-soft); margin-bottom:16px; font-family:'Source Sans 3',sans-serif; font-weight:700;}
+  footer ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  footer a{font-size:14.5px; text-decoration:none; color:#B9C3D6; transition:color .2s;}
+  footer a:hover{color:var(--marigold-soft);}
+  .foot-bottom{
+    margin-top:52px; padding-top:24px; border-top:1px solid rgba(185,195,214,0.15);
+    display:flex; justify-content:space-between; font-size:13px; color:#7C8AA3; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px){
+    nav{display:none;}
+    .welcome-grid, .visit-grid, .donate-grid{grid-template-columns:1fr; gap:36px;}
+    .times-grid{grid-template-columns:1fr;}
+    .min-grid{grid-template-columns:1fr 1fr;}
+    .fel-grid{grid-template-columns:1fr;}
+    .lead-grid{grid-template-columns:1fr 1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr; row-gap:36px;}
+    .event-row{grid-template-columns:70px 1fr; row-gap:8px;}
+    .event-tag{grid-column:2; justify-self:start;}
+  }
+  @media (max-width:560px){
+    .min-grid{grid-template-columns:1fr;}
+    .hero-service{gap:22px;}
+    section{padding:70px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <div class="brand">
+      <span class="brand-en">Telugu Church of Sydney</span>
+      <span class="brand-te tel">తెలుగు చర్చి</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#welcome">Welcome</a></li>
+        <li><a href="#times">Services</a></li>
+        <li><a href="#fellowships">Fellowships</a></li>
+        <li><a href="#ministries">Ministries</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#donate">Give</a></li>
+        <li><a href="#visit">Visit Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-arcs" aria-hidden="true">
+    <svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="700" cy="700" r="640" fill="none" stroke="#C9922E" stroke-opacity="0.14" stroke-width="1"/>
+      <circle cx="700" cy="700" r="520" fill="none" stroke="#C9922E" stroke-opacity="0.18" stroke-width="1"/>
+      <circle cx="700" cy="700" r="400" fill="none" stroke="#E3B65D" stroke-opacity="0.25" stroke-width="1"/>
+      <circle cx="700" cy="700" r="280" fill="none" stroke="#E3B65D" stroke-opacity="0.35" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="eyebrow">A Telugu-speaking family of faith, gathered in Sydney</div>
+      <h1>Worship in your <em>mother tongue</em>,<br>rooted in Christ</h1>
+      <div class="hero-te tel">మీ మాతృభాషలో ఆరాధన, క్రీస్తులో వేరూనుకున్న సంఘం</div>
+      <p class="hero-sub">Every Sunday, Telugu families from across Sydney gather to worship, pray, and grow together — in language, hymns, and fellowship that feel like home.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#visit">Plan Your Visit</a>
+        <a class="btn btn-ghost" href="#times">See Service Times</a>
+        <a class="btn btn-ghost" href="#" title="Live every Sunday on YouTube">Watch Live</a>
+      </div>
+      <div class="hero-service">
+        <div><strong>Sunday, 10:00 AM</strong>Telugu Worship Service</div>
+        <div><strong>Wednesday, 7:00 PM</strong>Telugu Bible Study</div>
+        <div><strong>Every 1st Saturday</strong>Prayer & Fellowship Meeting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="motif" aria-hidden="true">
+  <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M10 30 C 25 5, 45 5, 50 25 C 55 40, 40 40, 30 28"/>
+      <path d="M70 30 C 85 5, 105 5, 110 25 C 115 40, 100 40, 90 28"/>
+      <path d="M130 30 C 145 5, 165 5, 170 25 C 175 40, 160 40, 150 28"/>
+      <path d="M190 30 C 205 5, 225 5, 230 25 C 235 40, 220 40, 210 28"/>
+      <path d="M250 30 C 265 5, 285 5, 290 25 C 295 40, 280 40, 270 28"/>
+      <path d="M310 30 C 325 5, 345 5, 350 25 C 355 40, 340 40, 330 28"/>
+      <path d="M370 30 C 385 5, 405 5, 410 25 C 415 40, 400 40, 390 28"/>
+      <path d="M430 30 C 445 5, 465 5, 470 25 C 475 40, 460 40, 450 28"/>
+      <path d="M490 30 C 505 5, 525 5, 530 25 C 535 40, 520 40, 510 28"/>
+      <path d="M550 30 C 565 5, 585 5, 590 25 C 595 40, 580 40, 570 28"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ================= WELCOME ================= -->
+<section class="welcome" id="welcome">
+  <div class="wrap welcome-grid">
+    <div class="reveal">
+      <div class="eyebrow">Meelku Swagatam · మీకు స్వాగతం</div>
+      <h2>Wherever you are in your journey with God, there's a seat for you here.</h2>
+      <p>We are a congregation of Telugu-speaking families across Sydney — students, young professionals, and generations of families — who have made this city home while holding on to the faith and language of our own. Our services blend Telugu hymns, scripture, and prayer with the warmth of a shared table afterwards.</p>
+      <div class="welcome-te tel">మీరు ఎక్కడ ఉన్నా, దేవుని ఎదుట మీకు ఒక స్థానం ఉంది.</div>
+    </div>
+    <div class="welcome-card reveal">
+      <h3>New here? Here's what to expect</h3>
+      <ul class="welcome-list">
+        <li><b>Language</b> Service is conducted primarily in Telugu, with English available for youth and visitors.</li>
+        <li><b>Dress</b> Come as you are — there's no dress code.</li>
+        <li><b>Children</b> Sunday School runs alongside the main service for kids of all ages.</li>
+        <li><b>After service</b> Stay back for tea, snacks, and conversation — this is often the best part.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="motif" aria-hidden="true">
+  <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M10 30 C 25 5, 45 5, 50 25 C 55 40, 40 40, 30 28"/>
+      <path d="M70 30 C 85 5, 105 5, 110 25 C 115 40, 100 40, 90 28"/>
+      <path d="M130 30 C 145 5, 165 5, 170 25 C 175 40, 160 40, 150 28"/>
+      <path d="M190 30 C 205 5, 225 5, 230 25 C 235 40, 220 40, 210 28"/>
+      <path d="M250 30 C 265 5, 285 5, 290 25 C 295 40, 280 40, 270 28"/>
+      <path d="M310 30 C 325 5, 345 5, 350 25 C 355 40, 340 40, 330 28"/>
+      <path d="M370 30 C 385 5, 405 5, 410 25 C 415 40, 400 40, 390 28"/>
+      <path d="M430 30 C 445 5, 465 5, 470 25 C 475 40, 460 40, 450 28"/>
+      <path d="M490 30 C 505 5, 525 5, 530 25 C 535 40, 520 40, 510 28"/>
+      <path d="M550 30 C 565 5, 585 5, 590 25 C 595 40, 580 40, 570 28"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ================= SERVICE TIMES ================= -->
+<section class="times" id="times">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Weekly Gatherings</div>
+      <h2>Times to gather</h2>
+      <p>Three rhythms of worship, study, and prayer — each open to the whole community.</p>
+    </div>
+    <div class="times-grid reveal">
+      <div class="time-card">
+        <div class="eyebrow">Main Service</div>
+        <h3>Telugu Sunday Worship</h3>
+        <div class="when">Sundays · 10:00 AM – 12:00 PM</div>
+        <p>Telugu hymns, scripture, and preaching, followed by fellowship tea downstairs.</p>
+      </div>
+      <div class="time-card">
+        <div class="eyebrow">Midweek</div>
+        <h3>Telugu Bible Study</h3>
+        <div class="when">Wednesdays · 7:00 PM – 8:30 PM</div>
+        <p>Small-group study through scripture, held in Telugu, in homes across Sydney.</p>
+      </div>
+      <div class="time-card">
+        <div class="eyebrow">Monthly</div>
+        <h3>Prayer & Fellowship</h3>
+        <div class="when">1st Saturday · 6:00 PM</div>
+        <p>An evening of prayer, testimony, and a shared meal for the whole church family.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FELLOWSHIPS ================= -->
+<section class="fellowships" id="fellowships">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Home Groups</div>
+      <h2>Fellowships, closer to home</h2>
+      <p>Sydney is wide — so we gather in two regional fellowships during the week, for prayer, Bible study, and support between Sundays.</p>
+    </div>
+    <div class="fel-grid reveal">
+      <div class="fel-card">
+        <div class="eyebrow">Region</div>
+        <h3>Norwest Fellowship</h3>
+        <span class="tel">నార్త్‌వెస్ట్ సహవాసం</span>
+        <p>For families in the Hills District and North West Sydney to gather midweek in Telugu, close to home.</p>
+        <div class="fel-meta">
+          <span><b>When:</b> Fortnightly, weekday evenings</span>
+          <span><b>Where:</b> Rotating homes across Norwest & the Hills District</span>
+        </div>
+      </div>
+      <div class="fel-card">
+        <div class="eyebrow">Region</div>
+        <h3>Southwest Fellowship</h3>
+        <span class="tel">సౌత్‌వెస్ట్ సహవాసం</span>
+        <p>For families across South West Sydney to meet, pray, and study scripture together during the week.</p>
+        <div class="fel-meta">
+          <span><b>When:</b> Fortnightly, weekday evenings</span>
+          <span><b>Where:</b> Rotating homes across South West Sydney</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="motif" aria-hidden="true">
+  <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <path d="M10 30 C 25 5, 45 5, 50 25 C 55 40, 40 40, 30 28"/>
+      <path d="M70 30 C 85 5, 105 5, 110 25 C 115 40, 100 40, 90 28"/>
+      <path d="M130 30 C 145 5, 165 5, 170 25 C 175 40, 160 40, 150 28"/>
+      <path d="M190 30 C 205 5, 225 5, 230 25 C 235 40, 220 40, 210 28"/>
+      <path d="M250 30 C 265 5, 285 5, 290 25 C 295 40, 280 40, 270 28"/>
+      <path d="M310 30 C 325 5, 345 5, 350 25 C 355 40, 340 40, 330 28"/>
+      <path d="M370 30 C 385 5, 405 5, 410 25 C 415 40, 400 40, 390 28"/>
+      <path d="M430 30 C 445 5, 465 5, 470 25 C 475 40, 460 40, 450 28"/>
+      <path d="M490 30 C 505 5, 525 5, 530 25 C 535 40, 520 40, 510 28"/>
+      <path d="M550 30 C 565 5, 585 5, 590 25 C 595 40, 580 40, 570 28"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ================= MINISTRIES ================= -->
+<section class="ministries" id="ministries">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Get Involved</div>
+      <h2>Ministries for every season of life</h2>
+      <p>Ways to grow, serve, and belong — for children, youth, and women of the church.</p>
+    </div>
+    <div class="min-grid">
+      <div class="min-card reveal">
+        <svg class="min-icon" viewBox="0 0 40 40" fill="none" stroke="#8B3A2F" stroke-width="1.6"><path d="M20 6l4 8 9 1-6.5 6.5L28 30l-8-4.5L12 30l1.5-8.5L7 15l9-1z"/></svg>
+        <h3>Kids Ministry</h3>
+        <p>Bible stories, songs, and crafts during the main service, plus our annual Vacation Bible School — this year's theme, "Faith in the Field."</p>
+        <span class="tel">పిల్లల మంత్రిత్వం</span>
+      </div>
+      <div class="min-card reveal">
+        <svg class="min-icon" viewBox="0 0 40 40" fill="none" stroke="#2B5F5A" stroke-width="1.6"><path d="M8 30V14a4 4 0 014-4h16a4 4 0 014 4v16l-6-4H12z"/></svg>
+        <h3>Youth</h3>
+        <p>A space for Sydney-raised Telugu youth to connect faith with everyday life, friendship, and purpose.</p>
+        <span class="tel">యువజన మంత్రిత్వం</span>
+      </div>
+      <div class="min-card reveal">
+        <svg class="min-icon" viewBox="0 0 40 40" fill="none" stroke="#C9922E" stroke-width="1.6"><path d="M20 8a6 6 0 016 6v4a6 6 0 01-12 0v-4a6 6 0 016-6zM12 32c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        <h3>Women's Ministry</h3>
+        <p>A gathering for the women of our church to study scripture, pray, and support one another.</p>
+        <span class="tel">మహిళా మంత్రిత్వం</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEADERS ================= -->
+<section class="leaders" id="leaders">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Who Leads Us</div>
+      <h2>Meet our leaders</h2>
+      <p>The team shepherding our services, fellowships, and ministries.</p>
+    </div>
+    <div class="lead-grid reveal">
+      <div class="lead-card">
+        <div class="lead-avatar">SP</div>
+        <h3>[Senior Pastor Name]</h3>
+        <div class="lead-role">Senior Pastor</div>
+        <p>Leads Sunday worship and oversees the life of the church.</p>
+      </div>
+      <div class="lead-card">
+        <div class="lead-avatar">NW</div>
+        <h3>[Leader Name]</h3>
+        <div class="lead-role">Norwest Fellowship</div>
+        <p>Coordinates the Norwest home fellowship gatherings.</p>
+      </div>
+      <div class="lead-card">
+        <div class="lead-avatar">SW</div>
+        <h3>[Leader Name]</h3>
+        <div class="lead-role">Southwest Fellowship</div>
+        <p>Coordinates the Southwest home fellowship gatherings.</p>
+      </div>
+      <div class="lead-card">
+        <div class="lead-avatar">YM</div>
+        <h3>[Leader Name]</h3>
+        <div class="lead-role">Youth & Kids</div>
+        <p>Leads our youth and children's ministries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUOTE ================= -->
+<section class="quote-section">
+  <div class="wrap">
+    <blockquote class="reveal">"We moved to Sydney not knowing a single soul. This congregation became the family we needed — and worshipping in Telugu again, after so long, felt like coming home."</blockquote>
+    <cite>— A member of our Sydney congregation</cite>
+  </div>
+</section>
+
+<!-- ================= EVENTS ================= -->
+<section class="events" id="events">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What's Coming Up</div>
+      <h2>Upcoming events</h2>
+    </div>
+    <div class="events-list reveal">
+      <div class="event-row">
+        <div class="event-date"><span class="d">17–19</span><span class="m">Jul 2026</span></div>
+        <div class="event-info"><h3>Faith in the Field — Vacation Bible School</h3><p>Three days of games, worship, and Bible lessons for children aged 5–12.</p></div>
+        <span class="event-tag">Kids</span>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><span class="d">02</span><span class="m">Aug</span></div>
+        <div class="event-info"><h3>Telugu Christian Fellowship Night</h3><p>An evening of hymns, testimonies, and dinner for the whole church family.</p></div>
+        <span class="event-tag">Fellowship</span>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><span class="d">20</span><span class="m">Sep</span></div>
+        <div class="event-info"><h3>Youth Retreat</h3><p>A weekend away for Telugu youth to reflect, worship, and connect.</p></div>
+        <span class="event-tag">Youth</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DONATE ================= -->
+<section class="donate" id="donate">
+  <div class="wrap donate-grid">
+    <div class="reveal">
+      <div class="eyebrow">Offerings & Tithes</div>
+      <h2>Give with a grateful heart</h2>
+      <p>Giving is an act of worship — supporting our services, ministries, and fellowships across Sydney. Thank you for your generosity, however you choose to give.</p>
+      <div class="donate-actions">
+        <a class="btn btn-primary" href="#">Give Online</a>
+        <a class="btn btn-ghost" href="#visit">Ask a Question</a>
+      </div>
+    </div>
+    <div class="donate-card reveal">
+      <div class="donate-row"><span>Account Name</span><span>Telugu Church of Sydney</span></div>
+      <div class="donate-row"><span>BSB</span><span>000-000</span></div>
+      <div class="donate-row"><span>Account Number</span><span>0000 0000</span></div>
+      <div class="donate-row"><span>Reference</span><span>Your Name + Tithe/Offering</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div class="reveal">
+      <div class="eyebrow">Come As You Are</div>
+      <h2>Plan your visit</h2>
+      <div class="addr">
+        <strong>Telugu Church of Sydney</strong>
+        123 Church Street, Parramatta NSW 2150<br>
+        Street parking available · 5 min walk from Parramatta Station
+      </div>
+      <div class="visit-map">
+        <svg width="260" height="200" viewBox="0 0 260 200">
+          <rect width="260" height="200" fill="#1B2A46"/>
+          <path d="M0 140 Q 60 100 130 130 T 260 110" stroke="#2B5F5A" stroke-width="6" fill="none" opacity="0.6"/>
+          <path d="M0 60 L 260 90" stroke="#3a4a6e" stroke-width="1" opacity="0.5"/>
+          <path d="M40 0 L 90 200" stroke="#3a4a6e" stroke-width="1" opacity="0.5"/>
+          <path d="M180 0 L 220 200" stroke="#3a4a6e" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <div class="pin">
+          <svg width="26" height="34" viewBox="0 0 26 34"><path d="M13 0C5.8 0 0 5.8 0 13c0 9.5 13 21 13 21s13-11.5 13-21C26 5.8 20.2 0 13 0z" fill="#C9922E"/><circle cx="13" cy="13" r="5" fill="#101a30"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Get In Touch</div>
+      <h2>Say hello before Sunday</h2>
+      <p style="color:#4a4744; margin-top:14px;">Have a question, need directions, or want someone to welcome you at the door? Send us a note.</p>
+      <form onsubmit="event.preventDefault(); this.reset(); alert('Thank you — we will be in touch soon.');">
+        <input type="text" placeholder="Your name" required>
+        <input type="email" placeholder="Email address" required>
+        <textarea placeholder="How can we help?"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-brand-en">Telugu Church of Sydney</div>
+      <div class="foot-brand-te tel">తెలుగు చర్చి, సిడ్నీ</div>
+      <p>A Telugu-speaking Christian family gathered in Sydney — in worship, in language, and in life.</p>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <ul>
+        <li><a href="#times">Service Times</a></li>
+        <li><a href="#visit">Directions</a></li>
+        <li><a href="#welcome">What to Expect</a></li>
+        <li><a href="#leaders">Our Leaders</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <ul>
+        <li><a href="#fellowships">Fellowships</a></li>
+        <li><a href="#ministries">Ministries</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#donate">Give Online</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@teluguchurchsydney.org">hello@teluguchurchsydney.org</a></li>
+        <li><a href="tel:+61000000000">(02) 0000 0000</a></li>
+      </ul>
+      <div class="social-row">
+        <a href="#" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="#B9C3D6"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M14 9h3V5h-3a4 4 0 00-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9a1 1 0 011-1z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube" title="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M11 10l4 2-4 2z" fill="#B9C3D6" stroke="none"/></svg>
+        </a>
+      </div>
+      <div class="live-note"><span class="live-dot"></span> Live every Sunday on our YouTube page</div>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Telugu Church of Sydney</span>
+    <span>Made with care, in Telugu and English</span>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('solid', window.scrollY > 40);
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
