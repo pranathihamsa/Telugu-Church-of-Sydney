@@ -1,2 +1,2 @@
-# Telugu-Church-of-Sydney
+# Telugu-Church-Sydney
 TCS Website
